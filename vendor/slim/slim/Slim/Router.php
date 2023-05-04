@@ -295,7 +295,7 @@ class Router implements \Iterator
     /**
      * Iterator Interface: Rewind
      */
-    public function rewind()
+    public function rewind(): void
     {
         reset($this->matchedRoutes);
     }
@@ -304,7 +304,7 @@ class Router implements \Iterator
      * Iterator Interface: Current
      * @return \Slim\Route|false
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->matchedRoutes);
     }
@@ -313,7 +313,7 @@ class Router implements \Iterator
      * Iterator Interface: Key
      * @return int|null
      */
-    public function key()
+    public function key(): mixed
     {
         return key($this->matchedRoutes);
     }
@@ -321,7 +321,7 @@ class Router implements \Iterator
     /**
      * Iterator Interface: Next
      */
-    public function next()
+    public function next(): void
     {
         next($this->matchedRoutes);
     }
@@ -330,8 +330,8 @@ class Router implements \Iterator
      * Iterator Interface: Valid
      * @return boolean
      */
-    public function valid()
+    public function valid(): bool
     {
-        return $this->current();
+        return $this->current() !== false;
     }
 }

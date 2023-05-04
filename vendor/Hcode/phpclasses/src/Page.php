@@ -14,15 +14,15 @@ class Page {
 		"data"=>[]
 	];
 
-	public function __construct($opts = array(), $tpl_dir = "/php7-ecommerce/")
+	public function __construct($opts = array(), $tpl_dir = "/php7-ecommerce/views/")
 	{
 
 		$this->options = array_merge($this->defaults, $opts);
 
 		$config = array(
 		    "base_url"      => null,
-		    "tpl_dir"       => $_SERVER['DOCUMENT_ROOT'].$tpl_dir."/views/",
-		    "cache_dir"     => $_SERVER['DOCUMENT_ROOT'].$tpl_dir."/views-cache/",
+		    "tpl_dir"       => $_SERVER['DOCUMENT_ROOT'].$tpl_dir,
+		    "cache_dir"     => $_SERVER['DOCUMENT_ROOT']."/php7-ecommerce/views/views-cache/",
 		    "debug"         => false
 		);
 
