@@ -165,9 +165,9 @@ CREATE TABLE IF NOT EXISTS `tb_cartsproducts` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE INDEX `FK_cartsproducts_carts_idx` ON `tb_cartsproducts` (`idcart` ASC) VISIBLE;
+CREATE INDEX `FK_cartsproducts_carts_idx` ON `tb_cartsproducts` (`idcart` ASC);
 
-CREATE INDEX `FK_cartsproducts_products_idx` ON `tb_cartsproducts` (`idproduct` ASC) VISIBLE;
+CREATE INDEX `FK_cartsproducts_products_idx` ON `tb_cartsproducts` (`idproduct` ASC);
 
 
 -- -----------------------------------------------------
@@ -230,11 +230,11 @@ CREATE TABLE IF NOT EXISTS `tb_orders` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE INDEX `FK_orders_carts_idx` ON `tb_orders` (`idcart` ASC) VISIBLE;
+CREATE INDEX `FK_orders_carts_idx` ON `tb_orders` (`idcart` ASC);
 
-CREATE INDEX `FK_orders_users_idx` ON `tb_orders` (`iduser` ASC) VISIBLE;
+CREATE INDEX `FK_orders_users_idx` ON `tb_orders` (`iduser` ASC);
 
-CREATE INDEX `fk_orders_ordersstatus_idx` ON `tb_orders` (`idstatus` ASC) VISIBLE;
+CREATE INDEX `fk_orders_ordersstatus_idx` ON `tb_orders` (`idstatus` ASC);
 
 
 -- -----------------------------------------------------
@@ -259,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `tb_productscategories` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE INDEX `fk_productscategories_products_idx` ON `tb_productscategories` (`idproduct` ASC) VISIBLE;
+CREATE INDEX `fk_productscategories_products_idx` ON `tb_productscategories` (`idproduct` ASC);
 
 
 -- -----------------------------------------------------
@@ -285,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `tb_userslogs` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE INDEX `fk_userslogs_users_idx` ON `tb_userslogs` (`iduser` ASC) VISIBLE;
+CREATE INDEX `fk_userslogs_users_idx` ON `tb_userslogs` (`iduser` ASC);
 
 
 -- -----------------------------------------------------
@@ -308,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `tb_userspasswordsrecoveries` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE INDEX `fk_userspasswordsrecoveries_users_idx` ON `tb_userspasswordsrecoveries` (`iduser` ASC) VISIBLE;
+CREATE INDEX `fk_userspasswordsrecoveries_users_idx` ON `tb_userspasswordsrecoveries` (`iduser` ASC);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

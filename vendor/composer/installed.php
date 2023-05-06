@@ -3,7 +3,7 @@
         'name' => 'qdmatheus/php7-ecommerce',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '37ccac7a01301c15a600c8b10a3ec4a67e0d5ee3',
+        'reference' => '8b7e19ab632e4be6ff9553607d56b47a3912a056',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'qdmatheus/php7-ecommerce' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '37ccac7a01301c15a600c8b10a3ec4a67e0d5ee3',
+            'reference' => '8b7e19ab632e4be6ff9553607d56b47a3912a056',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
