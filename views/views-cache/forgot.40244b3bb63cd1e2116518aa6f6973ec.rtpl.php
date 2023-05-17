@@ -33,7 +33,7 @@
   <div class="lockscreen-item">
 
     <!-- lockscreen credentials (contains the form) -->
-    <form  action="/admin/forgot" method="post">
+    <form  action="/php7-ecommerce/index.php/admin/forgot" method="post">
       <div class="input-group">
         <input type="email" class="form-control" placeholder="Digite o e-mail" name="email">
 
@@ -50,7 +50,7 @@
     Digite seu e-mail e receba as instruções para redefinir a sua senha.
   </div>
   <div class="text-center">
-    <a href="/php7-ecommerce/admin/login">Or sign in as a different user</a>
+    <a href="/php7-ecommerce/index.php/admin/login">Or sign in as a different user</a>
   </div>
   <div class="lockscreen-footer text-center">
     Copyright &copy; 2014-2016 <b><a href="http://almsaeedstudio.com" class="text-black">Almsaeed Studio</a></b><br>

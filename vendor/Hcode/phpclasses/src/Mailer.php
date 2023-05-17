@@ -6,7 +6,7 @@ use Rain\Tpl;
 
 class Mailer {
 
-    const USERNAME = "cursophp7hcode@gmail.com";
+    const USERNAME = "matheus.qo@gmail.com";
     const PASSWORD = "<?password?>";
     const NAME_FROM = "Hcode Store";
 
@@ -26,8 +26,14 @@ class Mailer {
 
 		$tpl = new Tpl();
 
+        foreach ($data as $key => $value) {
+            $tpl->assign($key, $value);
+        }
+
+        $html = $tpl->draw($tplName, true);
+
         //Create a new PHPMailer instance
-        $this->$this->mail = new \PHPMailer();
+        $this->mail = new \PHPMailer();
 
         //Tell PHPMailer to use SMTP
         $this->mail->isSMTP();
@@ -48,6 +54,18 @@ class Mailer {
         // - 465 for SMTP with implicit TLS, a.k.a. RFC8314 SMTPS or
         // - 587 for SMTP+STARTTLS
         $this->mail->Port = 587;
+
+        $this->mail->isSMTP();
+
+        //para enviar o email via gmail
+        $this->mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
+
 
         //Set the encryption mechanism to use:
         // - SMTPS (implicit TLS on port 465) or
