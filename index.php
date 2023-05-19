@@ -7,6 +7,7 @@ use \Slim\Slim;
 use \Hcode\Page;
 use \Hcode\PageAdmin;
 use \Hcode\Models\User;
+use \Hcode\Models\Category;
 
 $app = new Slim();
 
@@ -217,6 +218,39 @@ $app->post('/admin/forgot/reset', function(){
 	]);
 
 	$page->setTpl("forgot-reset-success");
+
+});
+
+$app->get('/admin/categories', function(){
+
+	$categories = Category::listAll();
+
+	$page = new PageAdmin();
+
+	$page->setTpl("categories", [
+		'categories'=>$categories
+	]);
+
+});
+
+$app->get('/admin/categories/create', function(){
+
+	$page = new PageAdmin();
+
+	$page->setTpl("categories-create");
+
+});
+
+$app->post('/admin/categories/create', function(){
+
+	$category = new Category();
+
+	$category->setData($_POST);
+
+	$category->save();
+
+	header("Location: /php7-ecommerce/index.php/admin/categories");
+	exit;
 
 });
 
