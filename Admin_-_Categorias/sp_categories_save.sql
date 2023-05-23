@@ -1,3 +1,5 @@
+DROP PROCEDURE sp_categories_save
+
 DELIMITER $$
 CREATE PROCEDURE `sp_categories_save` (
 pidcategory INT,
