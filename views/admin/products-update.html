@@ -18,7 +18,7 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/admin/products/{$product.idproduct}" method="post" enctype="multipart/form-data">
+        <form role="form" action="/php7-ecommerce/index.php/admin/products/{$product.idproduct}" method="post" enctype="multipart/form-data">
           <div class="box-body">
             <div class="form-group">
               <label for="desproduct">Nome da produto</label>
@@ -49,7 +49,7 @@
               <input type="file" class="form-control" id="file" name="file" value="{$product.vlweight}">
               <div class="box box-widget">
                 <div class="box-body">
-                  <img class="img-responsive" id="image-preview" src="{$product.desphoto}" alt="Photo">
+                  <img class="img-responsive" id="image-preview" src="/php7-ecommerce/index.php/admin/products/{$product.desphoto}" alt="Photo">
                 </div>
               </div>
             </div>
