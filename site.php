@@ -67,7 +67,10 @@ $app->get("/cart", function(){
 
 	$page = new Page();
 
-	$page->setTpl("cart");
+	$page->setTpl("cart", [
+		"cart"=>$cart->getValues(),
+		"products"=>$cart->getProducts()
+	]);
 
 });
 
@@ -79,7 +82,13 @@ $app->get("/cart/:idproduct/add", function($idproduct){
 
 	$cart = Cart::getFromSession();
 
-	$cart->addProduct($product);
+	$qtd = (isset($_GET['qtd'])) ? (int)$_GET['qtd'] : 1;
+
+	for ($i = 0; $i < $qtd; $i++) {
+
+		$cart->addProduct($product);
+
+	}	
 
 	header("Location: /php7-ecommerce/index.php/cart");
 	exit;
