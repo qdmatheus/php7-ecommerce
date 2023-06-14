@@ -125,4 +125,15 @@ $app->get("/cart/:idproduct/remove", function($idproduct){
 
 });
 
+$app->post("/cart/freight", function(){
+
+	$cart = Cart::getFromSession();
+
+	$cart->setFreight($_POST["zipcode"]);
+
+	header("Location: /php7-ecommerce/index.php/cart");
+	exit;
+
+})
+
 ?>
