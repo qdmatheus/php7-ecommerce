@@ -66,9 +66,9 @@ class User extends Model {
 
         $sql = new Sql();
 
-        $results = $sql->select("SELECT * FROM tb_users WHERE deslogin = :LOGIN", array(
-            ":LOGIN"=>$login
-        ));
+        $results = $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b ON a.idperson = b.idperson WHERE a.deslogin = :LOGIN", array(
+			":LOGIN"=>$login
+		)); 
 
         if (count($results) === 0) 
         {
@@ -210,19 +210,21 @@ class User extends Model {
                 $dataRecovery = $results2[0];
 
                 $iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
-             $code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', User::SECRET, 0, $iv);
-             $result = base64_encode($iv.$code);
-             if ($inadmin === true) {
-                 $link = "http://www.hcodecommerce.com.br/admin/forgot/reset?code=$result";
-             } else {
-                 $link = "http://www.hcodecommerce.com.br/forgot/reset?code=$result";
-             } 
-             $mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir senha da Hcode Store", "forgot", array(
-                 "name"=>$data['desperson'],
-                 "link"=>$link
-             )); 
-             $mailer->send();
-             return $link;
+                $code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', User::SECRET, 0, $iv);
+                $result = base64_encode($iv.$code);
+
+                if ($inadmin === true) {
+                    $link = "http://www.hcodecommerce.com.br/index.php/admin/forgot/reset?code=$result";
+                } else {
+                    $link = "http://www.hcodecommerce.com.br/index.php/forgot/reset?code=$result";
+                }
+                
+                $mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir senha da Hcode Store", "forgot", array(
+                    "name"=>$data['desperson'],
+                    "link"=>$link
+                )); 
+                $mailer->send();
+                return $link;
 
             }
         }
