@@ -82,7 +82,7 @@ class User extends Model {
         {
             $user = new User();
 
-            $data["desperson"] = utf8_encode($data["desperson"]);
+            $data["desperson"] = $data["desperson"];
 
             $user->setData($data);
 
@@ -126,7 +126,7 @@ class User extends Model {
         $sql = new Sql();
         
         $results = $sql->select("CALL sp_users_save(:desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
-            ":desperson"=>utf8_decode($this->getdesperson()),
+            ":desperson"=>$this->getdesperson(),
             ":deslogin"=>$this->getdeslogin(),
             ":despassword"=>User::getPasswordHash($this->getdespassword()),
             ":desemail"=>$this->getdesemail(),
@@ -148,7 +148,7 @@ class User extends Model {
 
         $data = $results[0];
 
-        $data["desperson"] = utf8_encode($data["desperson"]);
+        $data["desperson"] = $data["desperson"];
 
         $this->setData($data);
     }
@@ -159,7 +159,7 @@ class User extends Model {
         
         $results = $sql->select("CALL sp_usersupdate_save(:iduser, :desperson, :deslogin, :despassword, :desemail, :nrphone, :inadmin)", array(
             ":iduser"=>$this->getiduser(),
-            ":desperson"=>utf8_decode($this->getdesperson()),
+            ":desperson"=>$this->getdesperson(),
             ":deslogin"=>$this->getdeslogin(),
             ":despassword"=>User::getPasswordHash($this->getdespassword()),
             ":desemail"=>$this->getdesemail(),
