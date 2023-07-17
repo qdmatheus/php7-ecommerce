@@ -256,8 +256,7 @@ $app->post("/checkout", function(){
 	//switch ((int)$_POST['payment-method']) {
 
 		//case 1:
-		header("Location: /php7-ecommerce/index.php/order/".$order->getidorder());
-		//."/pagseguro");
+		header("Location: /php7-ecommerce/index.php/order/".$order->getidorder()."/pagseguro");
 		//break;
 
 		//case 2:
@@ -267,6 +266,33 @@ $app->post("/checkout", function(){
 	//}
 
 	exit;
+
+});
+
+$app->get("/order/:idorder/pagseguro", function($idorder){
+
+	User::verifyLogin(false);
+
+	$order = new Order();
+
+	$order->get((int)$idorder);
+
+	$cart = $order->getCart();
+
+	$page = new Page([
+		'header'=>false,
+		'footer'=>false
+	]);
+
+	$page->setTpl("payment-pagseguro", [
+		'order'=>$order->getValues(),
+		'cart'=>$cart->getValues(),
+		'products'=>$cart->getProducts(),
+		'phone'=>[
+			'areaCode'=>substr($order->getnrphone(), 0, 2),
+			'number'=>substr($order->getnrphone(), 2, strlen($order->getnrphone()))
+		]
+	]);
 
 });
 
