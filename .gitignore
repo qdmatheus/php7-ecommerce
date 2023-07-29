@@ -3,4 +3,5 @@ views-cache/
 coisas_extras/
 
 # ignore all files ending with .php
+installed.json
 installed.php
